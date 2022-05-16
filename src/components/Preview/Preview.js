@@ -13,28 +13,20 @@ function Preview() {
   const {education}=useSelector(state=>state.education)
   const {projects}=useSelector(state=>state.projects)
   const {skills}=useSelector(state=>state.skills)
-  const {user1}=useSelector(state=>state.workExperience)
+  const {workExperience}=useSelector(state=>state.workExperience)
   const {user2}=useSelector(state=>state.skills)
-//   const userDummy = {
-//       name:"Nikhil",
-//       title:"Developer",
-//       email: "iampsnikhil98@gmail.com",
-//       phone:"9494252475",
-//       github:"github.com",
-//       linkedin:"linkedin.com"
-//   }
 
   useEffect(()=>{
     console.log("basicInfo is :",basicInfo)
     console.log("education is :",education)
     console.log("projects is :",projects)
-    if(user1!=null){
-      console.log("username is :",user1.title)
+    if(workExperience!=null){
+      console.log("username is :",workExperience.title)
     }
     // if(user2!=null){
     //   console.log("username is :",user2.title)
     // }
-  },[basicInfo,education,projects,skills,user2])
+  },[basicInfo,education,projects,skills,workExperience,user2])
 
   const displayEducation = education.map(e=>{
     return(
@@ -61,7 +53,17 @@ function Preview() {
       </div>
     )
   })
-
+  const displayWorkExperience = workExperience.map(e=>{
+    return(
+      <div>
+        <h5>{e.title}</h5>
+        <h5 className='text-primary'>{e.companyName}</h5>
+        <h5><AttachFileIcon/> {e.certificateLink}</h5>
+        <h5><FmdGoodIcon/>{e.location}</h5>
+        <p><CalendarTodayIcon/>[{e.startDate}] - [{e.endDate}]</p> 
+      </div>
+    )
+  })
   return(
     <div>
       <div class="bg-light" style={{border:"1px solid grey", margin:"140px", padding:"40px"}}>
@@ -106,22 +108,7 @@ function Preview() {
                   <div id="workExperience" className='mt-5'>
                     <h3>Work Experience</h3>
                     <hr/>
-                    {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae cumque cum rem omnis, est beatae assumenda optio eveniet. Repellat eius quibusdam nostrum unde, autem et impedit consequatur adipisci cupiditate expedita.</p> */}
-                    {user1!=null &&  <h5>{user1.title}</h5>}
-                    {user1!=null && <h4 className='text-primary'>{user1.companyName}</h4>}
-                    <div className='d-flex mb-2'>
-                    {user1!=null && <AttachFileIcon/>}
-                    {user1!=null && <a href="">{user1.certificateLink}</a>}
-                    </div>
-                    <div className='d-flex mb-2'>
-                    {user1!=null && <CalendarTodayIcon/>}
-                    {user1!=null && <h6>{user1.startDate} to {user1.endDate}</h6>}
-                    </div>
-                    <div className='d-flex mb-2'>
-                    {user1!=null && <FmdGoodIcon/>}
-                    {user1!=null && <h6>{user1.location}</h6>}
-                    </div>
-                    {user1!=null && <p>{user1.description}</p>}
+                    {displayWorkExperience}
                   </div>
                   <div id="skills" className='mt-5'>
                     <h3>Skills</h3>
