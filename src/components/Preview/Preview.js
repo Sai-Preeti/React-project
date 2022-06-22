@@ -1,21 +1,42 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useRef} from 'react';
 import {useSelector} from 'react-redux'
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+// import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
-import { Button } from '@mui/material';
-function Preview() {
+// import { Button } from '@mui/material';
+import ReactToPrint from "react-to-print";
+
+
+// export default function PDF() {
+//     const pdfRef = useRef(null);
+
+//     const handleDownload = () => {
+//         const content = pdfRef.current;
+
+//         const doc = new jsPDF();
+//         doc.html(content, {
+//             callback: function (doc) {
+//                 doc.save('sample.pdf');
+//             }
+//         });
+//     };
+  
+// function Preview() {
+  
+function Preview()
+{
+  const resumeRef = useRef();
   const {basicInfo}=useSelector(state=>state.basicInfo)
   const {education}=useSelector(state=>state.education)
   const {projects}=useSelector(state=>state.projects)
   const {skills}=useSelector(state=>state.skills)
   const {workExperience}=useSelector(state=>state.workExperience)
   const {user2}=useSelector(state=>state.skills)
-
   useEffect(()=>{
     console.log("basicInfo is :",basicInfo)
     console.log("education is :",education)
@@ -65,34 +86,51 @@ function Preview() {
     )
   })
   return(
-    <div>
-      <div class="bg-light" style={{border:"1px solid grey", margin:"140px", padding:"40px"}}>
+    <div style={{margin:"0rem"}}>
+      {/* <button>Download</button> */}
+      <div ref={resumeRef} class="bg-light" style={{border:"0.05rem solid grey",width:"100%",height:"94.45rem",margin:"0rem"}}>
           {/* <p className="display-3 mt-5">List of Users</p> */}
           {/* {user==null && <p className='display-5 text-danger'>No User Found</p>} */}
           <form action="">
             <div>
-            {basicInfo!=null &&  <h1 className='heading ms-3 display-2'>{basicInfo.name}</h1>}
-              {basicInfo!=null && <h2 className='ms-3 subheading text-primary display-6'>{basicInfo.title}</h2>}
-              <div className='d-flex'>
-                <div className='d-flex ms-3 me-5 align-items-center'>
-                {basicInfo!=null &&  <AlternateEmailIcon />}
-                    {basicInfo!=null &&<h3>{basicInfo.email}</h3>}
+            {basicInfo!=null &&  <h1 className='heading ms-4 mt-5 display-2'>{basicInfo.name}</h1>}
+              {basicInfo!=null && <h2 className='ms-4 subheading text-primary display-6'>{basicInfo.title}</h2>}
+              <div
+                // className='row'
+                style={{display:"flex",flexDirection:"row"}}
+               >
+                 <div style={{display:"flex",flexDirection:"row"}}>
+                <div style={{display:"flex",flexDirection:"row"}}>
+                  <div  
+                    style={{display:"flex",flexDirection:"row"}}
+                  className=' ms-3 me-5 align-items-center'
+                  >
+                  {basicInfo!=null &&  <EmailIcon className="text-primary me-2" style={{fontSize:"2rem"}}/>}
+                      {basicInfo!=null &&<h3>{basicInfo.email}</h3>}
+                  </div>
+                  <div 
+                  className='d-flex me-5 align-items-center'    
+                  >
+                  {basicInfo!=null && <PhoneIcon className="text-primary" style={{fontSize:"2rem"}}/>}
+                      {basicInfo!=null &&<h3>{basicInfo.phno}</h3>}
+                  </div>
                 </div>
-                <div className='d-flex me-5 align-items-center'>
-                {basicInfo!=null && <PhoneIcon />}
-                    {basicInfo!=null &&<h3>{basicInfo.phno}</h3>}
-                </div>
-                <div className='d-flex me-5 align-items-center'>
-                {basicInfo!=null && <LinkedInIcon />}
-                    {basicInfo!=null && <h3>{basicInfo.LinkedIn}</h3>}
-                </div>
-                <div className='d-flex me-5 align-items-center'>
-                {basicInfo!=null && <GitHubIcon />}
-                    {basicInfo!=null && <h3>{basicInfo.githubLink}</h3>}
+                <div style={{display:"flex",flexDirection:"row"}}>
+                  <div
+                  className='d-flex me-5 align-items-center'
+                  >
+                  {basicInfo!=null && <LinkedInIcon className="text-primary me-2" style={{fontSize:"3.2rem"}}/>}
+                      {basicInfo!=null && <h3>{basicInfo.LinkedIn}</h3>}
+                  </div> 
+                  <div className='d-flex  align-items-center'>
+                  {basicInfo!=null && <GitHubIcon className="me-2" style={{fontSize:"3rem"}}/>}
+                      {basicInfo!=null && <h3>{basicInfo.githubLink}</h3>}
+                  </div>
                 </div>
               </div>
+              </div>
               <div style={{display:"flex",flexDirection:"row"}}>
-                <div style={{flex:"0.6"}} className='me-5'>
+                <div style={{flex:"0.6",margin:"2rem"}} className='me-5'>
                 <div id="education" className='mt-5'>
                     <h3>Education</h3>
                     <hr/>
@@ -104,7 +142,7 @@ function Preview() {
                     {displayProject}
                   </div>
                 </div>
-                <div style={{flex:"0.4"}} className='me-5'>
+                <div style={{flex:"0.4",margin:"2rem"}} className='me-5'>
                   <div id="workExperience" className='mt-5'>
                     <h3>Work Experience</h3>
                     <hr/>
@@ -121,18 +159,29 @@ function Preview() {
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum quaerat culpa pariatur id aperiam ex. Similique quod, nostrum suscipit ab animi fuga reprehenderit assumenda tempora eius maiores praesentium cumque dolores!</p>
                   </div>
                 </div>
+                </div>
               </div>
-            </div>
           {/* {user!=null && <p className='display-5 text-danger'>{user.name}</p>} */}
           </form>
       </div>
-      <div className='m-auto'>
-        <Button color="primary">Print</Button>
+      {/* <div className='m-auto'>
+        <Button color="primary" onClick="handleDownload">Print</Button>
+      </div> */}
+      <div style={{display:"flex"}}>
+      <ReactToPrint
+          trigger={() => {
+            return (
+              <button style={{margin:"auto", marginBottom:"32px"}}>
+                Download
+              </button>
+            );
+          }}
+          content={() => resumeRef.current}
+        />
       </div>
     </div>
    
    )
-
-}
+  }
 
 export default Preview;

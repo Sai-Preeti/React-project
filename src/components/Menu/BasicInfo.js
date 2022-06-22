@@ -48,7 +48,9 @@ function BasicInfo() {
               <input type="LinkedIn" id="LinkedIn" className="form-control" {...register('LinkedIn')}/>
             </div>
             </div>
-            <button type="submit" style={{width:"5rem"}} className='btn btn-primary d-block mt-5'>Save</button>
+            <div style={{padding:"2rem",textAlign:"center"}}>
+            <button type="submit"  className='btn-lg btn-primary mt-5'>Save</button>
+            </div>
             </form>
           </div>
         </div>

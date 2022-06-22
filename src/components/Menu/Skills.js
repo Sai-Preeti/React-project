@@ -22,7 +22,7 @@ function Skills() {
     const skillSelected = (skills) =>{
       if(skills!=null){
             setSelectedSkill(skills) 
-            console.log("selectedProgram is : ", skills)
+            console.log("selectedSkill is : ", skills)
             var index = data.findIndex(d=>d.skills==skills)
             console.log("index is : ", index)
             setSelectedSkill(index)
@@ -56,7 +56,7 @@ function Skills() {
       return(
         <div style={{zIndex:"1", display:"flex", alignItems:"center",backgroundColor:index==selectedIndex?"blue":"grey", color:"white",borderRadius:"8px", margin:"20px",padding:"2px"}}>
           <p onClick={()=>{
-          skillSelected(skills.skill)
+          skillSelected(skills.skills)
           }} style={{height:"11px",width:"84px",marginLeft:"5px"}}>Skill {index+1}</p>
           <IconButton style={{zIndex:"2"}}>
             <ClearIcon onClick={()=>{removeElement(skills)}} style={{color:'white'}} />

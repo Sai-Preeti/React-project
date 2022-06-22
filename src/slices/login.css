@@ -83,12 +83,12 @@ body {
     */
 
 .container {
-    max-width: 500px;
-    min-width: 300px;
-    max-height: 700px;
-    width: 30%;
-    height: 60%;
-    margin: 100px auto;
+    width: 20rem;
+    /* min-width: 300px; */
+    /* max-height: 700px; */
+    /* width: 30%; */
+    height: 30rem;
+    margin-top: 5rem;
     background-color: #FFFFFF;
     border-radius: 25px;
     background: rgb(34, 193, 195);
@@ -97,5 +97,5 @@ body {
 
 .loginSuccess {
     text-align: center;
-    font-size: 40px;
+    font-size: 1rem;
 }

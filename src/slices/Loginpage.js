@@ -7,11 +7,11 @@ import Header from '../components/Header/Header';
 import Menu from '../components/Menu/Menu';
 
 import './login.css'
-
 function Loginpage() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+
 
   // User Login info
   const database = [
@@ -83,7 +83,7 @@ const Google = props => (
 );
   const renderForm = (
     <div className="container">
-    <div className="form" style={{height:"400px"}}>
+    <div className="form">
     <div className = "header text-center text-light"> Login</div>
       <form onSubmit={handleSubmit}>
         <div className="input-container">
@@ -107,11 +107,14 @@ const Google = props => (
   return (
     <div className="app">
       <div className="login-form">
-        {isSubmitted ? <div><div className = "loginSuccess mt-5">User is successfully logged in</div>
-          <Header/>
-          <Menu/>
-          <Preview/>
-        </div>: renderForm}
+        {isSubmitted ?
+        <div>
+        {/* <div className = "loginSuccess mt-5">User is successfully logged in</div> */}
+          <Header/> 
+          <Menu/> 
+           <Preview/>
+        </div>: renderForm
+}
       </div>
     </div>
   );
