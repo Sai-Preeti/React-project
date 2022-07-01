@@ -80,15 +80,15 @@ function Preview()
         <h5>{e.title}</h5>
         <h5 className='text-primary'>{e.companyName}</h5>
         <h5><AttachFileIcon/> {e.certificateLink}</h5>
-        <h5><FmdGoodIcon/>{e.location}</h5>
-        <p><CalendarTodayIcon/>[{e.startDate}] - [{e.endDate}]</p> 
+        <h5><FmdGoodIcon/> {e.location}</h5>
+        <p><CalendarTodayIcon/> {e.startDate} to {e.endDate}</p> 
       </div>
     )
   })
   return(
     <div style={{margin:"0rem"}}>
       {/* <button>Download</button> */}
-      <div ref={resumeRef} class="bg-light" style={{border:"0.05rem solid grey",width:"100%",height:"94.45rem",margin:"0rem"}}>
+      <div ref={resumeRef} class="bg-light" style={{border:"0.05rem solid grey",width:"100%",minHeight:"70rem",margin:"0rem"}}>
           {/* <p className="display-3 mt-5">List of Users</p> */}
           {/* {user==null && <p className='display-5 text-danger'>No User Found</p>} */}
           <form action="">
@@ -99,38 +99,38 @@ function Preview()
                 // className='row'
                 style={{display:"flex",flexDirection:"row"}}
                >
-                 <div style={{display:"flex",flexDirection:"row"}}>
-                <div style={{display:"flex",flexDirection:"row"}}>
+                 <div style={{display:"flex",width:"100%",flexDirection:"column"}}>
+                <div className='d-flex' style={{display:"flex",flexDirection:"row"}}>
                   <div  
                     style={{display:"flex",flexDirection:"row"}}
-                  className=' ms-3 me-5 align-items-center'
+                  className=' ms-4 me-5 align-items-center'
                   >
                   {basicInfo!=null &&  <EmailIcon className="text-primary me-2" style={{fontSize:"2rem"}}/>}
-                      {basicInfo!=null &&<h3>{basicInfo.email}</h3>}
+                      {basicInfo!=null &&<h5>{basicInfo.email}</h5>}
                   </div>
                   <div 
                   className='d-flex me-5 align-items-center'    
                   >
-                  {basicInfo!=null && <PhoneIcon className="text-primary" style={{fontSize:"2rem"}}/>}
-                      {basicInfo!=null &&<h3>{basicInfo.phno}</h3>}
+                  {basicInfo!=null && <PhoneIcon className="text-primary me-2" style={{fontSize:"2rem"}}/>}
+                      {basicInfo!=null &&<h5>{basicInfo.phno}</h5>}
+                  </div>
+                  <div className='d-flex  align-items-center'>
+                  {basicInfo!=null && <GitHubIcon className="me-2" style={{fontSize:"2rem"}}/>}
+                      {basicInfo!=null && <h5>{basicInfo.githubLink}</h5>}
                   </div>
                 </div>
-                <div style={{display:"flex",flexDirection:"row"}}>
+                {/* <div style={{display:"flex",flexDirection:"row"}}> */}
                   <div
                   className='d-flex me-5 align-items-center'
                   >
-                  {basicInfo!=null && <LinkedInIcon className="text-primary me-2" style={{fontSize:"3.2rem"}}/>}
-                      {basicInfo!=null && <h3>{basicInfo.LinkedIn}</h3>}
+                  {basicInfo!=null && <LinkedInIcon className="text-primary ms-4 align-items-center" style={{fontSize:"2rem"}}/>}
+                      {basicInfo!=null && <h5 className='ms-2'>{basicInfo.LinkedIn}</h5>}
                   </div> 
-                  <div className='d-flex  align-items-center'>
-                  {basicInfo!=null && <GitHubIcon className="me-2" style={{fontSize:"3rem"}}/>}
-                      {basicInfo!=null && <h3>{basicInfo.githubLink}</h3>}
-                  </div>
-                </div>
+                {/* </div> */}
               </div>
               </div>
               <div style={{display:"flex",flexDirection:"row"}}>
-                <div style={{flex:"0.6",margin:"2rem"}} className='me-5'>
+                <div style={{flex:"0.6",marginLeft:"2rem"}} className='me-5'>
                 <div id="education" className='mt-5'>
                     <h3>Education</h3>
                     <hr/>
