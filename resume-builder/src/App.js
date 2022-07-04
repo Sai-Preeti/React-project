@@ -14,7 +14,7 @@ function App() {
     <div className="App p-5">
       <Routes >
         <Route path = '/' element = { <Login/> }/>
-        <Route path='/Register' element={<RegisterForm/>}/>
+        <Route path='/Signup' element={<RegisterForm/>}/>
         <Route path = '/Main' element = { <Main/> }/> 
       </Routes>
       {/* <Header/>

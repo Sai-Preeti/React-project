@@ -36,7 +36,7 @@ function Preview()
   const {projects}=useSelector(state=>state.projects)
   const {skills}=useSelector(state=>state.skills)
   const {workExperience}=useSelector(state=>state.workExperience)
-  const {user2}=useSelector(state=>state.skills)
+  const {achievements}=useSelector(state=>state.achievements)
   useEffect(()=>{
     console.log("basicInfo is :",basicInfo)
     console.log("education is :",education)
@@ -44,10 +44,12 @@ function Preview()
     if(workExperience!=null){
       console.log("username is :",workExperience.title)
     }
+    // if(achievements!=null)
+    console.log(achievements)
     // if(user2!=null){
     //   console.log("username is :",user2.title)
     // }
-  },[basicInfo,education,projects,skills,workExperience,user2])
+  },[basicInfo,education,projects,skills,workExperience,achievements])
 
   const displayEducation = education.map(e=>{
     return(
@@ -74,6 +76,16 @@ function Preview()
       </div>
     )
   })
+  const displayAchievement = achievements.map(e=>{
+    return(
+      <div>
+        <li className='text-primary' key={e}>{e.achievement}</li>
+      </div>
+    )
+  })
+  
+  
+
   const displayWorkExperience = workExperience.map(e=>{
     return(
       <div>
@@ -153,10 +165,10 @@ function Preview()
                     <hr/>
                       {displaySkill}
                   </div>
-                  <div id="achievements" className='mt-5'>
+                  <div id="achievement" className='mt-5'>
                     <h3>Achievements</h3>
                     <hr />
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum quaerat culpa pariatur id aperiam ex. Similique quod, nostrum suscipit ab animi fuga reprehenderit assumenda tempora eius maiores praesentium cumque dolores!</p>
+                    {displayAchievement}
                   </div>
                 </div>
                 </div>
@@ -171,7 +183,7 @@ function Preview()
       <ReactToPrint
           trigger={() => {
             return (
-              <button style={{margin:"auto", marginBottom:"32px"}}>
+              <button className="btn btn-primary mt-3" style={{margin:"auto", marginBottom:"32px"}}>
                 Download
               </button>
             );

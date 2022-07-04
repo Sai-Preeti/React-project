@@ -26,6 +26,8 @@ app.get("/getUsers", (req, res) => {
 
 app.post("/writeUser", async(req, res) => {
     const User = req.body;
+    if (User == null)
+        return res.json({ status: 'null' })
     const newUser = new RegisterModel(User);
     await newUser.save();
     return res.json({ status: 'ok' })
@@ -33,14 +35,13 @@ app.post("/writeUser", async(req, res) => {
 });
 
 app.post('/Login', async(req, res) => {
-    console.log("hjfghj")
     console.log(req.body)
     const user = await RegisterModel.findOne({
-        email: req.body.email,
-    })
-
+            email: req.body.email,
+        })
+        // console.log(user)
     if (!user) {
-        return { status: 'error', error: 'Invalid login' }
+        return res.json({ status: 'err', error: 'Invalid login' })
     }
 
     const isPasswordValid = req.body.password === user.password

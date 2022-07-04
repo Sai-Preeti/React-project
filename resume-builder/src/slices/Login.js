@@ -19,7 +19,11 @@ function Login() {
         }).then((response) => {
             console.log("response received")
             console.log(response.data.status)
-            if (response.data.status === 'ok')
+            if(response.data.status === 'err')
+            {
+                alert('User does not exist, please signup')
+            }
+            else if (response.data.status === 'ok')
 			{
 				setOk(true)
                 navigate("/Main")
@@ -34,7 +38,7 @@ function Login() {
     return ( 
 	<div className='text-center container'>
         <h1 className='mb-5'> Login </h1> 
-		<input className = 'input-container'
+		<input className = 'input-container border rounded py-1 mx-auto' 
         value = { email }
         onChange = {
             (e) => setEmail(e.target.value)
@@ -42,7 +46,7 @@ function Login() {
         type = "email"
         placeholder = "Email"/>
         <br />
-        <input className = 'input-container'
+        <input className = 'input-container border rounded w-75'
         value = { password }
         onChange = {
             (e) => setPassword(e.target.value)
@@ -50,8 +54,12 @@ function Login() {
         type = "password"
         placeholder = "Password"/>
         <br/>
-        <button className="btn btn-primary" onClick = { writeUser } > Login </button>
-        <button className="btn btn-primary" onClick = {()=>{navigate('/Register')} } > Register </button>
+        <div className='text-center'>
+        <button className='btn font-weight-bold mt-3 btn-outline-primary' onClick={writeUser}> Login </button>
+        </div>
+        {/* <button className="btn btn-primary" onClick = { writeUser } > Login </button> */}
+        <br/>
+        <p className='mt-4'>New here? <a href="/Signup" className='text-decoration-none'>Signup</a></p>
 		</div>
 		
 

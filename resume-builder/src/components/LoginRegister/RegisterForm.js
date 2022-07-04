@@ -36,7 +36,10 @@ function RegisterForm() {
       {
         //   setOk(true)
           navigate("/")
-
+      }
+      if(response.data.status==="null")
+      {
+        alert('Details required')
       }
     });
   };
@@ -57,34 +60,38 @@ function RegisterForm() {
         )};
      </div> */}
       <div className='container'>
-        <h1 className='text-center mb-5'>Register</h1>
+        <h1 className='text-center mb-5'>Sign Up</h1>
         <div className='d-flex flex-column align-items-center '>
         <input
           type="text"
-          placeholder="name..."
-          className=''
+          placeholder="Name..."
+          className='border rounded w-75 '
           onChange={(event) => {
             setname(event.target.value);
           }}
         />
         <input
           type="email"
-          className=' mt-4'
-          placeholder="emailid..."
+          className='border rounded py-1 mx-auto mt-3'
+          placeholder="Email..."
           onChange={(event) => {
             setemail(event.target.value);
           }}
         />
         <input 
           type="text"
-          className='mt-4'
-          placeholder="password..."
+          className='border rounded w-75 mt-3'
+          placeholder="Password..."
           onChange={(event) => {
             setpassword(event.target.value);
           }}
         />
         </div>
-        <button className='btn btn-primary text-center mt-5 ms-5' onClick={writeUser}> Create User </button>
+        <div className='text-center'>
+        <button className='btn font-weight-bold mt-5 btn-outline-primary' onClick={writeUser}> Create User </button>
+        </div>
+        
+        <p className='mt-4'>Already have an account? <a href="/" className='text-decoration-none'>Login</a></p>
     </div>
     </div>
 );}

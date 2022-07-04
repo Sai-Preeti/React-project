@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit'
 export const achievements = createSlice({
     name: "basic",
     initialState: {
-        user: null
+        achievements: [],
     },
     reducers: {
         setAchievements: (state, action) => {
             console.log("sessting state.user to :", action.payload)
-            state.user = action.payload
+            state.achievements = action.payload
         }
     }
 })
