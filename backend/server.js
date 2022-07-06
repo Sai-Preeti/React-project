@@ -11,7 +11,7 @@ app.use(express.json());
 // app.use(cors());
 app.use(cors({ origin: true, credentials: true }));
 mongoose.connect(
-    "mongodb+srv://SaiPreeti:SaiPreeti@backendtest.wlb6s.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://<username>:<password>@backendtest.wlb6s.mongodb.net/?retryWrites=true&w=majority"
 );
 
 app.get("/getUsers", (req, res) => {
